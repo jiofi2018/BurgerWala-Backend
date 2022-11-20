@@ -14,6 +14,13 @@ const app = express();
 connectDb();
 
 //Middleware
+const cors = require('cors');
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 dotenv.config({ path: "./Config/config.env"});
 app.set('view engine','ejs');
 app.use(cookieParser());
