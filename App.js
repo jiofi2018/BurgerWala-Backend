@@ -44,9 +44,6 @@ app.use(
 // const cookieParser = require('cookie-parser')
 // const session = require('express-session')
 app.use(session({ secret: "MySecretKey", resave: false, saveUninitialized: false, cookie: {
-  secure: true,
-  httpOnly: true,
-  sameSite: "none",
   expires: 600000,
 },}));
 app.use(cookieParser());
