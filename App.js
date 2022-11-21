@@ -14,13 +14,6 @@ const app = express();
 connectDb();
 
 //Middleware
-const cors = require('cors');
-const corsOptions ={
-    origin:'http://localhost:3000', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
-app.use(cors(corsOptions));
 dotenv.config({ path: "./Config/config.env"});
 app.set('view engine','ejs');
 app.use(cookieParser());
@@ -44,12 +37,23 @@ app.use(
 // const cookieParser = require('cookie-parser')
 // const session = require('express-session')
 app.use(session({ secret: "MySecretKey", resave: false, saveUninitialized: false, cookie: {
-  expires: 600000,
+  secure: process.env.NODE_ENV === "development" ? false : true,
+  httpOnly: process.env.NODE_ENV === "development" ? false : true,
+  sameSite: process.env.NODE_ENV === "development" ? false : "none",
 },}));
 app.use(cookieParser());
 // app.use(session({ secret: 'secret' }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.enable("trust proxy");
+const cors = require('cors');
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+}
+app.use(cors(corsOptions));
 // app.use(function(req,res,next){
 //   res.header('Access-Control-Allow-Credentials',true);
 //   res.header('Access-Control-Allow-Origin','http://localhost:3000');
