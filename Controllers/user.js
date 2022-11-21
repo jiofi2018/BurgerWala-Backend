@@ -36,18 +36,19 @@ const myProfile = async (req,res,next)=>{
   const user = await User.findOne({email: e});
   const {
     email,photo,role } = user;
-  //console.log(req.session);
+  // console.log(req.cookies);
   res.status(200).json({
     success: true,
     user: email,
     photo: photo,
     role: role,
-  });
+  })
 }
 
 const login = async (req,res,next)=>{
   //console.log(req.body.email);
   req.session.username = req.body.email;
+  res.cookie(`connect.sid`,req.cookies['connect.sid']);
   res.status(200).json({
     success: true,
     message: "Logged in Successfully",
