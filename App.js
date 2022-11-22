@@ -46,6 +46,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 app.enable("trust proxy");
+app.set("trust proxy", 1);
 const cors = require('cors');
 const corsOptions ={
     origin:'http://localhost:3000', 
