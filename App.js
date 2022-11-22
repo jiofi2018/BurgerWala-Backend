@@ -37,9 +37,9 @@ app.use(
 // const cookieParser = require('cookie-parser')
 // const session = require('express-session')
 app.use(session({ secret: "MySecretKey", resave: false, saveUninitialized: false, cookie: {
-  secure: process.env.NODE_ENV === "development" ? false : true,
-  httpOnly: process.env.NODE_ENV === "development" ? false : true,
-  sameSite: process.env.NODE_ENV === "development" ? false : "none",
+  secure: true,
+  httpOnly: true,
+  sameSite: "none",
 },}));
 app.use(cookieParser());
 // app.use(session({ secret: 'secret' }));
