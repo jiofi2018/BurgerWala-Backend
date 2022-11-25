@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "App.js",
-  "proxy":"http://localhost:3000/",
+  "proxy": "http://localhost:3000/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node App.js"
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.1",
+    "connect-mongodb-session": "^3.1.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
