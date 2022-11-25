@@ -49,7 +49,7 @@ const login = async (req,res,next)=>{
   //console.log(req.body.email);
   req.session.username = req.body.email;
   console.log(`connect.sid`,req.cookies['connect.sid']);
-  // res.cookie(`connect.sid`,req.cookies['connect.sid']);
+  res.cookie(`connect.sid`,req.cookies['connect.sid']);
   res.status(200).json({
     success: true,
     message: "Logged in Successfully",
