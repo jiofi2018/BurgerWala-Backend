@@ -47,12 +47,12 @@ app.use(session({
   rolling: false,
   saveUninitialized: false,
   unset: "destroy",
-  cookie:  {
-     sameSite: "none",
-     secure: true,      
-     httpOnly: true, 
-     maxAge: 8600000
-  },
+  // cookie:  {
+  //    sameSite: "none",
+  //    secure: true,      
+  //    httpOnly: true, 
+  //    maxAge: 8600000
+  // },
   store: store
 }));
 app.use(cookieParser());

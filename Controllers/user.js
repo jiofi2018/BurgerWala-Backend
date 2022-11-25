@@ -55,6 +55,19 @@ const login = async (req,res,next)=>{
     message: "Logged in Successfully",
   });
 }
+const loginnew = async (req,res,next)=>{
+  console.log(req.body.email);
+  req.session.username = req.body.email;
+  console.log(`connect.sid`,req.cookies['connect.sid']);
+  // res.cookie(`connect.sid`,req.cookies['connect.sid']);
+  req.session.save((err) => console.log(err));
+  res.header("Content-Type", "application/json");
+  //res.send({hasSession: true, user: {name: req.session.username}});
+  res.status(200).json({
+    success: true,
+    message: "Logged in Successfully",
+  });
+}
 
 const logout = (req, res) => {
   req.session.destroy((err) => {
@@ -110,4 +123,4 @@ const allStats = async (req,res,next)=>{
   });
 }
 
-module.exports = {register, login, logout, myProfile, allUsers, allStats};
+module.exports = {register, login, loginnew, logout, myProfile, allUsers, allStats};

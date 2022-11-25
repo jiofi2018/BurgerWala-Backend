@@ -5,7 +5,8 @@ const isAuth = (req, res, next) => {
     // console.log('req.isAuthenticated : ', req.isAuthenticated);
     // console.log('req.session', req.session);
     // console.log('req.user : ', req.user);
-    if (req.user) {
+    // if (req.user) {
+    if (req.session.username) {
       return next();
     } else {
       res.status(401).json({
